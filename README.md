@@ -4,10 +4,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Setup
 
-Install node v18.15.0
-Install @angular/cli@15
-Run 'npm install' on the root directory
-Start the api project (C#)
+#Install node v18.15.0
+
+#Install @angular/cli@15
+
+#Run 'npm install' on the root directory
+
+#Start the api project (C#)
+
 
 ## Development server
 
