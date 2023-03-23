@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  quotationsBaseUrl: "https://localhost:44336/"
 };

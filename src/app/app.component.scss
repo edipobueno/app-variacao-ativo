@@ -1,11 +1,22 @@
 .mat-toolbar {
-  h3 {
+  h2 {
     width: 100%;
     text-align: center;
   }
 }
 
 .container {
-  width: 100%;
-  height: calc(100% - 63.99px);
+  margin: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 83.99px);
+  max-height: calc(100% - 83.99px);
+  overflow-y: auto;
+
+  .cdk-column-date {
+    text-align: center;
+  }
+
+  .cdk-column-value, .cdk-column-variation-d1, .cdk-column-variation-init, .cdk-column-volume {
+    text-align: right;
+  }
 }

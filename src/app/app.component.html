@@ -1,8 +1,48 @@
 <mat-toolbar color="primary">
-  <h3>
+  <h2>
     Variação de Ativo
-  </h3>
+  </h2>
 </mat-toolbar>
-<section class="container mat-accent">
+<section class="container" fxLayout="column" fxLayoutGap="20px">
+  <mat-progress-bar [fxHide]="!isLoading" color="accent" mode="indeterminate" fxFlexAlign="center"
+                    fxLayoutAlign="middle"></mat-progress-bar>
+  <va-asset-variation-line-chart fxFlex [fxHide]="isLoading"></va-asset-variation-line-chart>
+  <table mat-table [fxHide]="isLoading" [dataSource]="dataSource$" fxFlex class="mat-elevation-z8">
 
+    <ng-container matColumnDef="day">
+      <th mat-header-cell *matHeaderCellDef> Dia</th>
+      <td mat-cell *matCellDef="let element; let i = index;"> {{ i + 1 }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Data</th>
+      <td mat-cell *matCellDef="let element;"> {{ element.day | date: 'dd/MM/yyyy' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef> Valor</th>
+      <td mat-cell
+          *matCellDef="let element;"> {{ element.open | currency: 'BRL' : 'symbol' : '1.2-2' : 'pt-BR'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="variation-d1">
+      <th mat-header-cell *matHeaderCellDef> Variação em relação a D-1</th>
+      <td mat-cell
+          *matCellDef="let element; let i = index;"> {{ i == 0 ? '-' : element.openVariationD1 | percent: '1.2-2' : 'pt-BR' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="variation-init">
+      <th mat-header-cell *matHeaderCellDef> Variação em relação a primeira data</th>
+      <td mat-cell
+          *matCellDef="let element; let i = index;"> {{i == 0 ? '-' : element.openVariation | percent: '1.2-2' : 'pt-BR' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="volume">
+      <th mat-header-cell *matHeaderCellDef> Volume</th>
+      <td mat-cell *matCellDef="let element"> {{element.volume }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </section>
